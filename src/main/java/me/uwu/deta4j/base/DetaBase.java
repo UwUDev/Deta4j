@@ -171,6 +171,7 @@ public class DetaBase {
 
         return query(payload, query);
     }
+    // TODO: 07/12/2022 query no args (with limit 10k)
 
     public QueryResponse query(QueryOperator query, String last) {
         return query(query, last, 0);

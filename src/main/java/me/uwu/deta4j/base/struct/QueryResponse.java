@@ -25,11 +25,11 @@ public class QueryResponse {
         return paging.getLast() != null;
     }
 
-    public QueryResponse next(){
+    public QueryResponse next(){ // TODO: 07/12/2022 has next check
         return base.query(query, paging.getLast());
     }
 
-    public QueryResponse next(int limit){
+    public QueryResponse next(int limit){ // TODO: 07/12/2022 has next check
         return base.query(query, paging.getLast(), limit);
     }
 }
