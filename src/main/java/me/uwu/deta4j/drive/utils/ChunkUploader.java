@@ -43,7 +43,7 @@ public class ChunkUploader {
 
     private String requestUploadId() {
         Request request = new Request.Builder()
-                .url("https://drive.deta.sh/v1/a04cwru2/test/uploads?name=" + filename)
+                .url(drive.getBaseUrl() + "uploads?name=" + filename)
                 .post(NULL_BODY)
                 .build();
 
@@ -59,7 +59,7 @@ public class ChunkUploader {
 
     private boolean uploadChunk(int chunkNumber) {
         Request request = new Request.Builder()
-                .url("https://drive.deta.sh/v1/a04cwru2/test/uploads/" + uploadId + "/parts?name=" + filename + "&part=" + (chunkNumber + 1))
+                .url(drive.getBaseUrl() + "uploads/" + uploadId + "/parts?name=" + filename + "&part=" + (chunkNumber + 1))
                 .post(RequestBody.create(chunks[chunkNumber], MediaType.get("application/octet-stream")))
                 .build();
 
@@ -76,7 +76,7 @@ public class ChunkUploader {
 
     private Optional<FileResponse> endUpload() {
         Request request = new Request.Builder()
-                .url("https://drive.deta.sh/v1/a04cwru2/test/uploads/" + uploadId + "?name=" + filename)
+                .url(drive.getBaseUrl() + "uploads/" + uploadId + "?name=" + filename)
                 .patch(NULL_BODY)
                 .build();
 
@@ -85,7 +85,7 @@ public class ChunkUploader {
             if (response.isSuccessful()) {
                 String fileNameResponse = GSON.fromJson(response.body().string(), JsonObject.class).get("name").getAsString();
                 response.close();
-                return Optional.of(new FileResponse(fileNameResponse, "a04cwru2", null, drive));
+                return Optional.of(new FileResponse(fileNameResponse, null, drive.getName(), drive));
             } else {
                 return Optional.empty();
             }
@@ -97,7 +97,7 @@ public class ChunkUploader {
 
     private void cancelUpload() {
         Request request = new Request.Builder()
-                .url("https://drive.deta.sh/v1/a04cwru2/test/uploads/" + uploadId + "?name=" + filename)
+                .url(drive.getBaseUrl() + "uploads/" + uploadId + "?name=" + filename)
                 .delete()
                 .build();
 

@@ -10,10 +10,8 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class DriveTester {
-    //5zrfnr
-    //a04cwru2_jAjDdjHWY9HyPVXuxRHb2KitvBJGVEA4
     public static void main(String[] args) {
-        DetaDrives drives = new DetaDrives("a04cwru2_jAjDdjHWY9HyPVXuxRHb2KitvBJGVEA4");
+        DetaDrives drives = new DetaDrives("nope");
         DetaDrive drive = drives.get("test");
         System.out.println(drive.getBaseUrl());
         File reallyCoolFile = new File("uploadMe.txt");

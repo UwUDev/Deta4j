@@ -53,7 +53,7 @@ public class DetaDrive {
         //noinspection deprecation
         RequestBody body = RequestBody.create(mediaType, data);
         Request request = new Request.Builder()
-                .url("https://drive.deta.sh/v1/a04cwru2/test/files?name=" + fullPath)
+                .url(baseUrl + "files?name=" + fullPath)
                 .post(body)
                 .addHeader("Content-Type", "application/octet-stream")
                 .build();
