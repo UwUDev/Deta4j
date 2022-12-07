@@ -73,7 +73,6 @@ public class DetaBase {
                 throw SQLConflictException.of(json.get("errors").getAsJsonArray().get(0).getAsString());
             }else {
                 response.close();
-                System.out.println(json);
                 try {
                     throw SQLException.of(json.get("errors").getAsJsonArray().get(0).getAsString());
                 } catch (Exception e) {
@@ -195,7 +194,6 @@ public class DetaBase {
     }
 
     public QueryResponse query(JsonObject payload, QueryOperator query) {
-        System.out.println(payload);
         Request request = new Request.Builder()
                 .url(baseUrl + "query")
                 .post(RequestBody.create(payload.toString(), MediaType.get("application/json")))
