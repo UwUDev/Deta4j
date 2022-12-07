@@ -99,6 +99,7 @@ QueryOperator query5 = new OrQuery(queries); // query1 OR query2 OR query3
 QueryResponse queryResponse = base.query(query4); // return first elements where query4 is true
 QueryResponse queryResponse = base.query(query5, 10); // return first 10 elements where query5 is true
 ```
+see all operators [here](https://github.com/UwUDev/Deta4j/tree/master/src/main/java/me/uwu/deta4j/base/query/impl)
 ## Deta Drive
 ### Create a Deta Drives instance and get any other Deta Drive instance
 ```java
