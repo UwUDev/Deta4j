@@ -23,6 +23,7 @@ WIP, see [Deta Base est class](https://github.com/UwUDev/Deta4j/blob/master/src/
         - [Export a file](#export-a-file)
         - [FileResponse usage](#fileresponse-usage)
         - [PackedFilesResponse usage](#packedfilesresponse-usage)
+    - [Deta Micro](#deta-micro)
 # Installation
 ## Maven
 Soon :tm:
@@ -178,3 +179,5 @@ PackedFilesResponse nextPackedFilesResponse = packedFilesResponse.next();
 //or
 PackedFilesResponse nextPackedFilesResponse = packedFilesResponse.next(10); // return next 10 files
 ```
+## Deta Micro
+soon :tm:
