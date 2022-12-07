@@ -158,20 +158,29 @@ public class DetaBase {
 
     public QueryResponse query(QueryOperator query, String last, int limit) {
         JsonObject payload = new JsonObject();
-        JsonElement queryElement = query.buildQuery();
-        if(queryElement.isJsonArray()) {
-            payload.add("query", queryElement);
-        }else {
-            JsonArray array = new JsonArray();
-            array.add(queryElement);
-            payload.add("query", array);
+        if (query != null) {
+            JsonElement queryElement = query.buildQuery();
+            if (queryElement.isJsonArray()) {
+                payload.add("query", queryElement);
+            } else {
+                JsonArray array = new JsonArray();
+                array.add(queryElement);
+                payload.add("query", array);
+            }
         }
         if (last != null) payload.addProperty("last", last);
         if (limit > 0) payload.addProperty("limit", limit);
 
         return query(payload, query);
     }
-    // TODO: 07/12/2022 query no args (with limit 10k)
+
+    public QueryResponse query() {
+        return query(Integer.MAX_VALUE - 1);
+    }
+
+    public QueryResponse query(int limit) {
+        return query(null, null, limit);
+    }
 
     public QueryResponse query(QueryOperator query, String last) {
         return query(query, last, 0);
