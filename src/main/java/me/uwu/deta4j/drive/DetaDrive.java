@@ -122,7 +122,7 @@ public class DetaDrive {
         return bytes;
     }
 
-    public PackedFilesResponse search(int limit, String prefix, String last) { // TODO: 07/12/2022 limit, prefix, last
+    public PackedFilesResponse search(int limit, String prefix, String last) {
         StringBuilder params = new StringBuilder();
         if (limit > 0)
             params.append("&limit=").append(limit);
