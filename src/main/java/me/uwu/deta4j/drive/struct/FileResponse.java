@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import me.uwu.deta4j.drive.DetaDrive;
 
+import java.io.File;
+
 public @Data class FileResponse {
     private final String name;
     @SerializedName("project_id")
@@ -13,10 +15,14 @@ public @Data class FileResponse {
     private final DetaDrive drive;
 
     public String[] delete() {
-        return drive.deleteFile(name);
+        return drive.delete(name);
     }
 
     public byte[] download() {
         return drive.download(name);
+    }
+
+    public File export(File file) {
+        return drive.export(name, file);
     }
 }

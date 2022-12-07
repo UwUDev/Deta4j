@@ -78,7 +78,7 @@ public class DetaDrive {
         return Optional.empty();
     }
 
-    public String[] deleteFile(String... filePaths) {
+    public String[] delete(String... filePaths) {
         JsonArray array = new JsonArray();
         for (String filePath : filePaths)
             array.add(filePath);
